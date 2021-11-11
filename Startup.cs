@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
+using pfm.Database;
 
 namespace pfm
 {
@@ -32,9 +29,15 @@ namespace pfm
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "pfm", Version = "v1" });
             });
 
-            services.AddDbContext<TransactionDbContext>(options => {
-                options.UseMySql("server = localhost;database = ")
-            })
+            var dbVer = Configuration["UseDbVer"]; 
+
+            services.AddDbContext<TransactionDBContext>(x =>
+            {
+                if (dbVer.Equals("MSSql"))
+                    x.UseMySQL(Configuration.GetConnectionString("DefaultConnectionMySql"));
+                else if (dbVer.Equals("MySql"))
+                    x.UseMySql(Configuration.GetConnectionString("DefaultConnectionMySql"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
