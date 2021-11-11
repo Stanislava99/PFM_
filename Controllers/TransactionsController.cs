@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using pfm.Models;
+using pfm.Commands;
+using System;
 
  namespace pfm.Controllers
 {
@@ -16,13 +18,13 @@ using pfm.Models;
         }
 
         [HttpGet]
-        public IActionResult GetTransactions([FromQuery] string transactionKind, [FromQuery] string startDate,[FromQuery] string endDate, [FromQuery] int? page, [FromQuery] int? pageSize, [FromQuery] string sortBy, [FromQuery] SortOrder sortOrder)
+        public IActionResult GetTransactions([FromQuery] string transactionKind, [FromQuery] DateTime startDate,[FromQuery] DateTime endDate, [FromQuery] int? page, [FromQuery] int? pageSize, [FromQuery] string sortBy, [FromQuery] SortOrder sortOrder)
         {
             return Ok();
         }
 
         [HttpPost("import")]
-        public IActionResult CreateTransaction()
+        public IActionResult CreateTransaction([FromBody] CreateTransactionCommand command)
         {
             return Ok();
         }
