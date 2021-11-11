@@ -27,3 +27,8 @@
 /media/stash/Stasha's Files/ASEE/pfm/obj/Debug/net5.0/ref/pfm.dll
 /media/stash/Stasha's Files/ASEE/pfm/obj/Debug/net5.0/pfm.pdb
 /media/stash/Stasha's Files/ASEE/pfm/obj/Debug/net5.0/pfm.genruntimeconfig.cache
+/media/stash/Stasha's Files/ASEE/pfm/bin/Debug/net5.0/Frontend/pfm-frontend/bower.json
+/media/stash/Stasha's Files/ASEE/pfm/bin/Debug/net5.0/Frontend/pfm-frontend/jsconfig.json
+/media/stash/Stasha's Files/ASEE/pfm/bin/Debug/net5.0/Frontend/pfm-frontend/package-lock.json
+/media/stash/Stasha's Files/ASEE/pfm/bin/Debug/net5.0/Frontend/pfm-frontend/package.json
+/media/stash/Stasha's Files/ASEE/pfm/bin/Debug/net5.0/Frontend/pfm-frontend/public/manifest.json

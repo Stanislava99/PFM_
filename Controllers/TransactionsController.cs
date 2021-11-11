@@ -30,13 +30,13 @@ using System;
         }
 
         [HttpPost("{id}/split")]
-        public IActionResult SplitTransactionById([FromRoute] int id)
+        public IActionResult SplitTransactionById([FromRoute] int id, [FromBody] SplitTransactionCommand command)
         {
             return Ok();
         }
 
         [HttpPost("{id}/categorize")]
-        public IActionResult CategorizeTransactionById([FromRoute] int id)
+        public IActionResult CategorizeTransactionById([FromRoute] int id, [FromBody] TransactionCategorizeCommand command)
         {
             return Ok();
         }

@@ -31,6 +31,10 @@ namespace pfm
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "pfm", Version = "v1" });
             });
+
+            services.AddDbContext<TransactionDbContext>(options => {
+                options.UseMySql("server = localhost;database = ")
+            })
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
