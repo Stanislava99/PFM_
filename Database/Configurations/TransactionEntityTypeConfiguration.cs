@@ -12,6 +12,7 @@ namespace pfm.Database.Configurations
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("id");
+            builder.Property(x => x.BeneficiaryName).HasColumnName("");
         }
     }
 }
