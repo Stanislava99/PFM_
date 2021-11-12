@@ -42,10 +42,6 @@
               "target": "Package",
               "version": "[27.1.1, )"
             },
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.11, )"
@@ -56,17 +52,9 @@
               "target": "Package",
               "version": "[5.0.11, )"
             },
-            "MySql.Data.EntityFrameworkCore": {
+            "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
-              "version": "[8.0.22, )"
-            },
-            "MySql.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.8, )"
-            },
-            "MySqlConnector": {
-              "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[5.0.0, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",

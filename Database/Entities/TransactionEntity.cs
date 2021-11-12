@@ -4,7 +4,8 @@ namespace pfm.Database.Entities
 {
     public class TransactionEntity
     {
-       public string BeneficiaryName { get; set; }
+        public int Id {get; set;}
+        public string BeneficiaryName { get; set; }
         public string Date { get; set; }    
         public Directions direction { get; set; }
         public double amount { get; set; }
