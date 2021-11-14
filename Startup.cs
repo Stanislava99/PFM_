@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using pfm.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace pfm
 {
@@ -24,6 +26,15 @@ namespace pfm
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "pfm", Version = "v1" });
+            });
+
+             var dbVer = Configuration["UseDbVer"]; // lokacija app.settings.json
+            services.AddDbContext<TransactionDBContext>(x =>
+            {
+                if (dbVer.Equals("MSSql"))
+                    x.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionMSSql"));
+                else if (dbVer.Equals("MySql"))
+                    x.UseMySql(Configuration.GetConnectionString("DefaultConnectionMySql"));
             });
         }
 
