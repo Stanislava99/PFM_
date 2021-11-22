@@ -3,9 +3,20 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import React, { Component } from 'react';
 
 class SidebarComponent extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+
+    }
+  }
+
+  toTransactionTable(event){
+    this.props.history.push('/transactions')
+  }
   render() {
     return (
-      <ProSidebar>
+      <ProSidebar >
         <SidebarHeader>
           <h1>PFM</h1>
         </SidebarHeader>

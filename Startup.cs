@@ -4,13 +4,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using pfm.Database;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using pfm.Services;
+using pfm.Database.Contracts;
+using pfm.Database;
 
 namespace pfm
 {
     public class Startup
     {
+        
+        private IServiceCollection Services { get; set; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,15 +33,26 @@ namespace pfm
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "pfm", Version = "v1" });
             });
 
-             var dbVer = Configuration["UseDbVer"]; // lokacija app.settings.json
-            services.AddDbContext<TransactionDBContext>(x =>
+            services.AddDbContext<pfm_databaseContext>(x =>
             {
-                if (dbVer.Equals("MSSql"))
-                    x.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionMSSql"));
-                else if (dbVer.Equals("MySql"))
-                    x.UseMySql(Configuration.GetConnectionString("DefaultConnectionMySql"));
+                x.UseNpgsql("Host=localhost;Database=pfm_database;User Id=postgres;Password=Stanislava99.");
             });
-        }
+            
+            services.AddControllers();
+            services.AddHttpClient();
+            services.AddCors();
+            // services.AddAutoMapper(typeof(Startup).Assembly);
+
+            // Dependency injection resolvers for services
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ICategoriesService, CategoriesService>();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            Services = services;
+          }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

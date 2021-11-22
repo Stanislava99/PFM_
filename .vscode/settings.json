@@ -1,17 +1,14 @@
 {
     "sqltools.connections": [
         {
-            "mysqlOptions": {
-                "authProtocol": "default"
-            },
             "previewLimit": 50,
             "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "mysql_connection",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "pfm_connection",
             "database": "pfm_db",
-            "username": "root",
-            "password": ""
+            "username": "postgres",
+            "password": "Stanislava99."
         }
     ]
 }
